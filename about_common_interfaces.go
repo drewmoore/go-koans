@@ -8,15 +8,7 @@ func aboutCommonInterfaces() {
     in.WriteString("hello world")
 
     out := new(bytes.Buffer)
-
-    /*
-       Your code goes here.
-       Hint, use these resources:
-
-       $ godoc -http=:8080
-       $ open http://localhost:8080/pkg/io/
-       $ open http://localhost:8080/pkg/bytes/
-    */
+    out.WriteString(in.String())
 
     assert(out.String() == "hello world") // get data from the io.Reader to the io.Writer
   }
@@ -26,6 +18,7 @@ func aboutCommonInterfaces() {
     in.WriteString("hello world")
 
     out := new(bytes.Buffer)
+    out.WriteString(string(bytes.Split(in.Bytes(), []byte(" "))[0]))
 
     assert(out.String() == "hello") // duplicate only a portion of the io.Reader
   }
